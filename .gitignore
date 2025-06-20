@@ -1,7 +1,7 @@
 .idea/
 activate/
 **/.DS_Store
-rooty/
+.next/
 __pycache__
 /.venv
 \#*.*\#
