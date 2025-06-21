@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   experimental: {
-    appDir: true,
+    // Remove appDir as it's now stable in Next.js 14
   },
 }
 

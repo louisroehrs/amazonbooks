@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # Backend API
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  # Frontend UI
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api:8000
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  # Optional: Add a database service if you want to extend the app later
+  # postgres:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: amazonbooks
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+
+# volumes:
+#   postgres_data: 
