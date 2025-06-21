@@ -1,0 +1,17 @@
+{
+  "name": "amazon-books-api",
+  "description": "A FastAPI application for managing books and reviews",
+  "repository": "https://github.com/yourusername/amazonbooks",
+  "keywords": ["python", "fastapi", "books", "api"],
+  "env": {
+    "PYTHON_VERSION": {
+      "description": "Python version to use",
+      "value": "3.12.0"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+} 
